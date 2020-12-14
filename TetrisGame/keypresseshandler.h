@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include "shapeDim.h"
+#include "collisiondetector.h"
+
 
 class KeyPressesHandler : public QObject
 {
@@ -22,6 +24,8 @@ public slots:
 
 private:
 
+
+    CollisionDetector _collisionDetector;
 };
 
 #endif // KEYPRESSESHANDLER_H

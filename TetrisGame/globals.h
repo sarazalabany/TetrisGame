@@ -26,6 +26,16 @@ static float windowGridUnitX =  static_cast<float> (1.0f/8.0f);
 static float windowGridUnitY =  static_cast<float> (1.0f/12.0f);
 
 
+//window borders
+static float xMaxCoordinate =  1.0f;
+static float xMinCoordinate = -1.0f;
+static float yMaxCoordinate =  1.0f;
+static float yMinCoordinate = -1.0f;
+
+//movement step
+static float yMovementStepSize = 2.0f * windowGridUnitY;
+static float xMovementStepSize = 2.0f * windowGridUnitX;
+
 static float unit_window_length = 1.0f/ float(window_length) ;
 static float unit_window_width = 1.0f / float(window_width) ;
 

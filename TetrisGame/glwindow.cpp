@@ -1,7 +1,7 @@
 #include "glwindow.h"
 
 
-GlWindow::GlWindow(QWidget* parent) {
+GlWindow::GlWindow( QWidget* parent) {
 
 }
 

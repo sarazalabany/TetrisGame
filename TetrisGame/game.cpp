@@ -18,7 +18,7 @@ void game::InitGame()
     //init timer/create Timer
     MoveBlockstimer = new QTimer();
     connect(MoveBlockstimer, &QTimer::timeout, this, &game::OnTimerTimeOut);
-    SetGameSpeed(GAME_SPEED_8_HZ);
+    SetGameSpeed(GAME_SPEED_1_HZ);
 
 }
 
@@ -77,9 +77,18 @@ void game::OnTimerTimeOut()
 
 void game::MoveBlockWithTime()
 {
+    if(_collisionDetector.CheckGameBottomBorder(&blockObj->corners))
+    {
+        //push it in container
+//        _BlocksContainer.push_back(blockObj)
+        return;
+    }
     blockObj->corners.corner1.y -= static_cast<float>(2.0f * windowGridUnitY);
     blockObj->corners.corner2.y -= static_cast<float>(2.0f * windowGridUnitY);
 
     blockObj->corners.corner3.y -= static_cast<float>(2.0f * windowGridUnitY);
     blockObj->corners.corner4.y -= static_cast<float>(2.0f * windowGridUnitY);
+
 }
+
+

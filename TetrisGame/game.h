@@ -8,6 +8,8 @@
 #include "globals.h"
 #include "tetrisshape.h"
 #include "glwindow.h"
+#include "collisiondetector.h"
+
 
 //this shoudl contain a container of shapes  that keeps track of the shapes which I currently have
 //int the game
@@ -40,11 +42,15 @@ public slots:
 private:
     void AddBlockToContainer();
     void MoveBlockWithTime();
+//    void CheckGameBorders();
 
-    GlWindow    *GlWindow_obj;
-    TetrisShape *blockObj;
-    QTimer      *MoveBlockstimer;
-    int         GameSpeed;
+    GlWindow                *GlWindow_obj;
+    TetrisShape             *blockObj;
+    QTimer                  *MoveBlockstimer;
+    int                     GameSpeed;
+    QVector <TetrisShape>     _BlocksContainer;
+    CollisionDetector         _collisionDetector;
+
 };
 
 #endif // GAME_H
