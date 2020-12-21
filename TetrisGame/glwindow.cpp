@@ -14,55 +14,12 @@ void GlWindow::Init()
 
 }
 
-void GlWindow::PaintTetrisShape(TetrisShape *TetrisShape)
+void GlWindow::PaintTetrisShape(QVector<TetrisShape*> container)
 {
-    shape = TetrisShape;
+    _shapeContainer = container;
     paintGL();
 }
 
-
-
-void GlWindow::keyPressEvent(QKeyEvent* event) //every key press wil be handeld here
-{
-    //qDebug()<<"pressed key" << static_cast<int> (event->key());
-
-    //TODO: convert this to a switch case
-    if (static_cast<int> (event->key()) == DOWN_KEY )
-    {
-        KeyPressesHandler.DownKeyPressed(&shape->corners);
-
-    }
-
-    else if (static_cast<int> (event->key()) ==  LEFT_KEY )
-    {
-        KeyPressesHandler.LeftKeyPressed(&shape->corners);
-    }
-
-    else if (static_cast<int> (event->key()) ==  RIGHT_KEY )
-    {
-        KeyPressesHandler.RightKeyPressed(&shape->corners);
-    }
-    //1-check if button was pressed
-    //2-Corners update
-    //3-graphic update
-    paintGL();
-
-}
-
-
-bool GlWindow::event(QEvent* event) //this is the more general case
-{
-    if (event->type() == QEvent::KeyPress) {
-           QKeyEvent *ke = static_cast<QKeyEvent *>(event);
-           if (ke->key() == 'A')  //if the key is A i will handle it
-           {
-              qDebug()<<"A button pressed";
-               return true;
-           }
-//        return KeyPressesHandler::event(QEvent::KeyPress);
-       }
-    return QOpenGLWindow::event(event); //everthing else gets handled by the default QWidget, and since I only have QOpenGLWindow
-}
 
 void GlWindow::initalizeGl()
 {
@@ -82,7 +39,11 @@ void GlWindow::paintGL()
     glDisable(GL_DEPTH_TEST); //disable 3d buffer
     glClear(GL_COLOR_BUFFER_BIT); //cleans the screen
 
-    glBegin(GL_QUADS);
+
+
+    for(auto shape : _shapeContainer)
+    {
+        glBegin(GL_QUADS);
 
          //first corner
          glColor3f(shape->blockColor.red,
@@ -112,6 +73,9 @@ void GlWindow::paintGL()
                    );
          glVertex2f(shape->corners.corner4.x, shape->corners.corner4.y);
 
-    glEnd();
+         glEnd();
+    }
+
+
     glFlush();
 }

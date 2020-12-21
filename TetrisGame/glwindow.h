@@ -6,15 +6,10 @@
 #include <QOpenGLFunctions>
 #include <QtOpenGL>
 #include <QDebug>
-#include <QEvent>
-#include <QKeyEvent>
-
 #include "globals.h"
 #include "shapeDim.h"
 #include "tetrisshape.h"
 
-//for handling key presses
-#include "keypresseshandler.h"
 
 class GlWindow : public QOpenGLWindow, protected QOpenGLFunctions
 {
@@ -25,16 +20,13 @@ class GlWindow : public QOpenGLWindow, protected QOpenGLFunctions
         ~GlWindow();
 
         void Init();
-        void PaintTetrisShape(TetrisShape *TetrisShape);
+        void PaintTetrisShape(QVector<TetrisShape*> container);
 
-        bool event(QEvent *evnt) override;
-
-        //handle keypresses event
-        void keyPressEvent(QKeyEvent *event) override;
     private:
+        void initalizeGl();
+
         TetrisShape *shape;
-        KeyPressesHandler KeyPressesHandler;
-         void initalizeGl();
+        QVector<TetrisShape*> _shapeContainer;
 
 
     protected:

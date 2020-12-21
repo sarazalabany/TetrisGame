@@ -9,22 +9,20 @@
 #include "tetrisshape.h"
 #include "glwindow.h"
 #include "collisiondetector.h"
+#include <QVector>
 
-
-//this shoudl contain a container of shapes  that keeps track of the shapes which I currently have
-//int the game
+#include <QWidget>
+#include <QEvent>
+#include <QKeyEvent>
+#include "keypresseshandler.h"
 
 
 //////////////////*Game sequence*////////////////////
 //1-create a block
 //2-push it in a container
-//3-clear the screen
-//4-create a new block
-//5-push
-//push block in a container
+//3-paint
 
-
-class game : public QObject
+class game : public QWidget
 {
      Q_OBJECT
 public:
@@ -36,20 +34,37 @@ public:
 
     void SetGameSpeed(int speed);
 
+protected:
+    void keyPressEvent(QKeyEvent* event) override;
+    bool event(QEvent* event) override;
+
+signals:
+    void blockStopped();
+
 public slots:
     void OnTimerTimeOut();
+    void OnblockStopped();
 
 private:
     void AddBlockToContainer();
+
+
     void MoveBlockWithTime();
-//    void CheckGameBorders();
+
+    void CreateBlock();
 
     GlWindow                *GlWindow_obj;
     TetrisShape             *blockObj;
     QTimer                  *MoveBlockstimer;
-    int                     GameSpeed;
-    QVector <TetrisShape>     _BlocksContainer;
-    CollisionDetector         _collisionDetector;
+    int                      GameSpeed;
+    QVector<TetrisShape*>    _BlocksContainer;
+    QVector<TetrisShape*>   _NewBlocksContainer;
+
+
+    CollisionDetector       _collisionDetector;
+
+    KeyPressesHandler KeyPressesHandler;
+
 
 };
 
