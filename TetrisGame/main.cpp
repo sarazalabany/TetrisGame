@@ -17,9 +17,9 @@ int main(int argc, char *argv[])
 
     //Game Loop
 
-    game gameInstance;
-    gameInstance.InitGame();
-    gameInstance.StartGame();
+    game *gameInstance = new game;
+    gameInstance->InitGame();
+    gameInstance->StartGame();
 
 
     return a.exec();
