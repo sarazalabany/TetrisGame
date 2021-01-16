@@ -13,14 +13,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-
-//    //Game Loop
-
-    GameUi *gameWindow =  new GameUi;
-//    gameWindow->show();
-
-
-    game *gameInstance = new game(gameWindow);
+    game *gameInstance = new game;
     gameInstance->InitGame();
     gameInstance->StartGame();
 

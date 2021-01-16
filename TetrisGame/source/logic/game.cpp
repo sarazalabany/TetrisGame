@@ -2,18 +2,21 @@
 #include <QTimer>
 
 
-game::game(GameUi *gameUi)
-    :GameUi_obj(gameUi)
+game::game()
 {
     GlWindow_obj = new GlWindow();
-    GlWindow_obj->installEventFilter(this);
+    GameUi_obj  	=  new GameUi;
+//    GlWindow_obj->installEventFilter(this);
+//    GameUi_obj->installEventFilter(this);
     KeyPressesHandler_obj = new KeyPressesHandler;
 
 }
 
 void game::InitGame()
 {
-
+    GameUi_obj->show();
+    GameUi_obj->InitGameWindow(GlWindow_obj);
+    GameUi_obj->DisplayGame();
 
     //init timer/create Timer
     MoveBlockstimer = new QTimer();
@@ -21,7 +24,6 @@ void game::InitGame()
     connect(this, &game::blockStopped, this, &game::OnblockStopped);
 
     SetGameSpeed(GAME_SPEED_1_HZ);
-
 
 }
 
@@ -36,8 +38,6 @@ void game::StartGame()
     MoveBlockstimer->start(GameSpeed);
 
     CreateBlock();
-
-    //qDebug()<<"Size of _NewBlocksContainer vector is "<<_NewBlocksContainer.size();
 }
 
 
@@ -58,7 +58,7 @@ bool game::eventFilter(QObject *obj, QEvent *event)
     if (event->type() == QEvent::KeyPress)
     {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-//          qDebug("key press is %d", keyEvent->key());
+         qDebug("key press is %d", keyEvent->key());
         KeyPressesHandler_obj->HandleKeyPress( &blockObj->corners,  keyEvent->key(), _FinishedBlocksContainer);
 
         return true;

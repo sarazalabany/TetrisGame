@@ -29,7 +29,7 @@ class game : public QObject
 {
      Q_OBJECT
 public:
-    game(GameUi *gameUi);
+    game();
 
     void InitGame();
     void StartGame();

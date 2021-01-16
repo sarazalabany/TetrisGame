@@ -13,9 +13,12 @@ GameUi::GameUi(QWidget *parent ) :
 void GameUi::InitGameWindow(GlWindow *glWindow_ptr)
 {
     glWindow = glWindow_ptr;
+    ui->TetrisScreen->addWidget(glWindow);
+
+
     glWindow->show(); //show should be called first because i think thsi is what makes opengl context
     glWindow->Init();
-    ui->TetrisScreen->addWidget(glWindow);
+
 
 }
 

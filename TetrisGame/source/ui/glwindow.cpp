@@ -2,7 +2,6 @@
 
 
 GlWindow::GlWindow( QWidget* parent) {
-//    installEventFilter(this); // install filter BEFORE setupUI.
 }
 
 GlWindow::~GlWindow() {}
