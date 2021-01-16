@@ -11,7 +11,7 @@
 #include "tetrisshape.h"
 
 
-class GlWindow : public QOpenGLWindow, protected QOpenGLFunctions
+class GlWindow : public QOpenGLWidget, protected QOpenGLFunctions
 {
         Q_OBJECT
 
@@ -20,18 +20,18 @@ class GlWindow : public QOpenGLWindow, protected QOpenGLFunctions
         ~GlWindow();
 
         void Init();
-        void PaintTetrisShape(QVector<TetrisShape*> container);
+        void SetOpenGlBuffer(QVector<TetrisShape*> container);
+        void PaintTetrisScreen();
 
     private:
-        void initalizeGl();
 
         TetrisShape *shape;
         QVector<TetrisShape*> _shapeContainer;
 
-
     protected:
         void resizeGL(int width, int height) override;
         void paintGL() override;
+        void initializeGL() override;
 
 };
 #endif // GLWINDOW_H

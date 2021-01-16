@@ -42,8 +42,10 @@ HEADERS += \
 
 
 FORMS += \
-     $$PWD/mainwindow.ui
-
+    #$$PWD/mainwindow.ui \
+    #header/ui/TetrisUi.ui \
+    $$PWD/gameui.ui
+     $$PWD/header/$$UI_DIR/*.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

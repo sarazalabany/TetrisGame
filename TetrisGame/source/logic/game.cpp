@@ -2,7 +2,8 @@
 #include <QTimer>
 
 
-game::game()
+game::game(GameUi *gameUi)
+    :GameUi_obj(gameUi)
 {
     GlWindow_obj = new GlWindow();
     GlWindow_obj->installEventFilter(this);
@@ -13,10 +14,6 @@ game::game()
 void game::InitGame()
 {
 
-    GlWindow_obj->setTitle("openGL Window");
-    GlWindow_obj->resize(window_width,window_length);
-    GlWindow_obj->show();
-    GlWindow_obj->Init();
 
     //init timer/create Timer
     MoveBlockstimer = new QTimer();
@@ -97,7 +94,8 @@ void game::OnblockStopped()
 void game::_UpdateWindow()
 {
     //paint tetris blocks
-    GlWindow_obj->PaintTetrisShape(_NewBlocksContainer);
+    GlWindow_obj->SetOpenGlBuffer(_NewBlocksContainer);
+     GlWindow_obj->PaintTetrisScreen();
 
 }
 

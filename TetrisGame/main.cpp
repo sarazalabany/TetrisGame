@@ -1,5 +1,3 @@
-#include "mainwindow.h"
-
 #include <QApplication>
 
 #include "tetrisshape.h"
@@ -15,12 +13,16 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    //Game Loop
 
-    game *gameInstance = new game;
+//    //Game Loop
+
+    GameUi *gameWindow =  new GameUi;
+//    gameWindow->show();
+
+
+    game *gameInstance = new game(gameWindow);
     gameInstance->InitGame();
     gameInstance->StartGame();
-
 
     return a.exec();
 }

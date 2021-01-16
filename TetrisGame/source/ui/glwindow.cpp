@@ -10,18 +10,23 @@ GlWindow::~GlWindow() {}
 
 void GlWindow::Init()
 {
-    initalizeGl();
+    initializeGL();
 
 }
 
-void GlWindow::PaintTetrisShape(QVector<TetrisShape*> container)
+void GlWindow::SetOpenGlBuffer(QVector<TetrisShape*> container)
 {
     _shapeContainer = container;
-    paintGL();
+
+}
+
+void GlWindow::PaintTetrisScreen()
+{
+        paintGL();
 }
 
 
-void GlWindow::initalizeGl()
+void GlWindow::initializeGL()
 {
     initializeOpenGLFunctions();
 }

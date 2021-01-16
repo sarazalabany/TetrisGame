@@ -16,6 +16,12 @@ public:
     bool CheckGameBottomBorder(QVector<squareCorners*> existingBlocks, squareCorners* blockCorners);
 
 private:
+    bool CompareBlockBottomWithExistingBlocks(squareCorners *block1, squareCorners *existingBlock);
+
+    bool CompareBlockTopWithExistingBlocks(squareCorners *block1, squareCorners *existingBlock);
+    bool CompareBlockRightSideWithExistingBlocks(squareCorners *block1, squareCorners *existingBlock);
+    bool CompareBlockLeftSideWithExistingBlocks(squareCorners *block1, squareCorners *existingBlock);
+
 };
 
 #endif // COLLISIONDETECTOR_H

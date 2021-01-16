@@ -17,7 +17,7 @@
 #include <QEvent>
 #include <QKeyEvent>
 #include "keypresseshandler.h"
-
+#include "gameui.h"
 
 //////////////////*Game sequence*////////////////////
 //1-create a block
@@ -25,15 +25,17 @@
 //3-paint
 
 class game : public QObject
+
 {
      Q_OBJECT
 public:
-    game();
+    game(GameUi *gameUi);
 
     void InitGame();
     void StartGame();
     void StopGame();
     void SetGameSpeed(int speed);
+
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event) override;
@@ -50,6 +52,8 @@ private:
     void MoveBlockWithTime();
     void CreateBlock();
 
+    GameUi                 *GameUi_obj;
+
     GlWindow                *GlWindow_obj;
     TetrisShape             *blockObj;
     QTimer                  *MoveBlockstimer;
@@ -62,8 +66,8 @@ private:
     KeyPressesHandler       *KeyPressesHandler_obj;
 
 
-
     void _UpdateWindow();
+
 };
 
 #endif // GAME_H
