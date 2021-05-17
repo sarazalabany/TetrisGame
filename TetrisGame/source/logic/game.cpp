@@ -26,8 +26,7 @@ Game_C::Game_C()
 
 void Game_C::OnStartGame()
 {
-
-    SetGameSpeed(GAME_SPEED_1_HZ);
+    _gameSpeed = GAME_SPEED_1_HZ;
 
     //show openGl screen in the mainwindow
     _gameUi->SetWindow(_glWindow);
@@ -46,7 +45,6 @@ void Game_C::AddBlockToContainer()
 void Game_C::StartGame()
 {
     _moveBlocksTimer->start(_gameSpeed);
-
     CreateBlock();
 }
 
@@ -55,12 +53,6 @@ void Game_C::StopGame()
 {
 
 }
-
-void Game_C::SetGameSpeed(int speed)
-{
-    _gameSpeed = speed;
-}
-
 
 bool Game_C::eventFilter(QObject *obj, QEvent *event)
 {
@@ -87,8 +79,6 @@ void Game_C::OnTimerTimeOut()
     qDebug()<<" Corner 1 Now is: "<<_blockObj->corners.corner1.x << ", " << _blockObj->corners.corner1.y;
     MoveBlockWithTime();
 
-
-
 }
 
 void Game_C::OnblockStopped()
@@ -96,7 +86,6 @@ void Game_C::OnblockStopped()
     _FinishedBlocksContainer.push_back(&_blockObj->corners);
     CreateBlock();
     qDebug()<<"Pushed a block in container";
-
 
 }
 
@@ -148,7 +137,6 @@ void Game_C::CreateBlock()
    _NewBlocksContainer.push_back(_blockObj);
 
    _UpdateWindow();
-
 
 }
 

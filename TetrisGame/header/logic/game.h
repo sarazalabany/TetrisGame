@@ -39,8 +39,6 @@ public:
     void InitGame();
     void StartGame();
     void StopGame();
-    void SetGameSpeed(int speed);
-
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event) override;
