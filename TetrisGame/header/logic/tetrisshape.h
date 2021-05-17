@@ -18,11 +18,11 @@ public:
     float width;
     float length;
 
-    point start;
-    squareCorners corners;
-    RGBColor blockColor;
+    Point_C start;
+    SquareCorners_C corners;
+    RGBColor_C blockColor;
 
-    void CreateShape(square block, point startingPos, RGBColor color);
+    void CreateShape(Square_C block, Point_C startingPos, RGBColor_C color);
 
 private:
 

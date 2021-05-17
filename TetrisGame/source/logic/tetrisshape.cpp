@@ -1,7 +1,7 @@
 #include "tetrisshape.h"
 #include <QDebug>
 
-TetrisShape::TetrisShape()
+TetrisShape_C::TetrisShape_C()
 {
 
 }
@@ -11,7 +11,7 @@ TetrisShape::TetrisShape()
 //    CreateShape(block, startingPos, color);
 //}
 
-void TetrisShape::CreateShape(square block, point startingPos, RGBColor color)
+void TetrisShape_C::CreateShape(Square_C block, Point_C startingPos, RGBColor_C color)
 {
     //store the starting position lever of the block
     start.x = startingPos.x;

@@ -17,7 +17,7 @@ private:
     RGBColor color;
     squareCorners corners;
 
-    randomize _randomHandler;
+    Randomize_C _randomHandler;
 
 };
 

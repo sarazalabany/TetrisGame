@@ -20,13 +20,13 @@ class GlWindow : public QOpenGLWidget, protected QOpenGLFunctions
         ~GlWindow();
 
         void Init();
-        void SetOpenGlBuffer(QVector<TetrisShape*> container);
+        void SetOpenGlBuffer(QVector<TetrisShape_C*> container);
         void PaintTetrisScreen();
 
     private:
 
-        TetrisShape *shape;
-        QVector<TetrisShape*> _shapeContainer;
+        TetrisShape_C *shape;
+        QVector<TetrisShape_C*> _shapeContainer;
 
     protected:
         void resizeGL(int width, int height) override;

@@ -1,7 +1,7 @@
 #include "shapeDim.h"
 
 
-point::point(int x)
+Point_C::Point_C(int x)
 {
 
 }

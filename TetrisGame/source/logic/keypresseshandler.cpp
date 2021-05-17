@@ -2,12 +2,12 @@
 #include "globals.h"
 #include <QDebug>
 
-KeyPressesHandler::KeyPressesHandler(QObject *parent)
+KeyPressesHandler_C::KeyPressesHandler_C(QObject *parent)
 {
 
 }
 
- void KeyPressesHandler::HandleKeyPress(squareCorners *corners, int keyPress, QVector<squareCorners*> existingBlocksContainer)
+ void KeyPressesHandler_C::HandleKeyPress(SquareCorners_C *corners, int keyPress, QVector<SquareCorners_C*> existingBlocksContainer)
 {
         _existingBlocksContainer = existingBlocksContainer;
 
@@ -31,7 +31,7 @@ KeyPressesHandler::KeyPressesHandler(QObject *parent)
 
 }
 
-void KeyPressesHandler::DownKeyPressed(squareCorners *corners)
+void KeyPressesHandler_C::DownKeyPressed(SquareCorners_C *corners)
 {
     if(_collisionDetector.CheckGameBottomBorder(_existingBlocksContainer, corners))
     {
@@ -46,7 +46,7 @@ void KeyPressesHandler::DownKeyPressed(squareCorners *corners)
 
 }
 
-void KeyPressesHandler::LeftKeyPressed(squareCorners *corners)
+void KeyPressesHandler_C::LeftKeyPressed(SquareCorners_C *corners)
 {
     if(_collisionDetector.CheckGameleftBorder(_existingBlocksContainer, corners))
     {
@@ -59,7 +59,7 @@ void KeyPressesHandler::LeftKeyPressed(squareCorners *corners)
     corners->corner4.x -= xMovementStepSize;
 }
 
-void KeyPressesHandler::RightKeyPressed(squareCorners *corners)
+void KeyPressesHandler_C::RightKeyPressed(SquareCorners_C *corners)
 {
     if(_collisionDetector.CheckGameRightSideBorder(_existingBlocksContainer, corners))
     {
@@ -73,7 +73,7 @@ void KeyPressesHandler::RightKeyPressed(squareCorners *corners)
 
 }
 
-void KeyPressesHandler::UpKeyPressed(squareCorners *corners)
+void KeyPressesHandler_C::UpKeyPressed(SquareCorners_C *corners)
 {
     corners->corner1.y += static_cast<float>(0.5);
     corners->corner2.y += static_cast<float>(0.5);

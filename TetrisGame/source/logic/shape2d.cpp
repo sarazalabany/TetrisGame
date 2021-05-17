@@ -2,26 +2,26 @@
 
 
 
-Shape2D::Shape2D()
+Shape2D_C::Shape2D_C()
 {
 
 }
 
-void Shape2D::CreateShape()
+void Shape2D_C::CreateShape()
 {
 
 
 }
 
-RGBColor Shape2D::GetColor()
+RGBColor_C Shape2D_C::GetColor()
 {
-    RGBColor color;
+    RGBColor_C color;
     return color;
 }
 
-squareCorners Shape2D::GetCorners()
+SquareCorners_C Shape2D_C::GetCorners()
 {
-    squareCorners corners;
+    SquareCorners_C corners;
     return corners;
 }
 

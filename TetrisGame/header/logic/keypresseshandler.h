@@ -25,7 +25,7 @@ private:
     void RightKeyPressed(squareCorners *corners);
 
     squareCorners *_corners;
-    CollisionDetector _collisionDetector;
+    CollisionDetector_C _collisionDetector;
     QVector<squareCorners*> _existingBlocksContainer;
 };
 

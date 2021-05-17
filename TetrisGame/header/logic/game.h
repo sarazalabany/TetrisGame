@@ -29,6 +29,7 @@ class game : public QObject
 {
      Q_OBJECT
 public:
+    //default constructor
     game();
 
     void InitGame();
@@ -52,18 +53,16 @@ private:
     void MoveBlockWithTime();
     void CreateBlock();
 
-    GameUi                 *GameUi_obj;
-
-    GlWindow                *GlWindow_obj;
-    TetrisShape             *blockObj;
-    QTimer                  *MoveBlockstimer;
-    int                      GameSpeed;
+    int                      _gameSpeed;
+    GameUi                 *_gameUi;
+    GlWindow                *_glWindow;
+    TetrisShape             *_blockObj;
+    QTimer                  *_moveBlocksTimer;
     QVector<squareCorners*> _FinishedBlocksContainer;
     QVector<TetrisShape*>   _NewBlocksContainer;
 
-
     CollisionDetector       _collisionDetector;
-    KeyPressesHandler       *KeyPressesHandler_obj;
+    KeyPressesHandler       *_keyPressesHandler;
 
 
     void _UpdateWindow();

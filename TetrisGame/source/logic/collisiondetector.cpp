@@ -1,12 +1,12 @@
 #include "collisiondetector.h"
 #include "QDebug"
 
-CollisionDetector::CollisionDetector()
+CollisionDetector_C::CollisionDetector_C()
 {
 
 }
 
-bool CollisionDetector::CheckGameleftBorder(QVector<squareCorners*> existingBlocks, squareCorners *blockCorners)
+bool CollisionDetector_C::CheckGameleftBorder(QVector<SquareCorners_C*> existingBlocks, SquareCorners_C *blockCorners)
 {
     bool leftSideBorderCrash = false;
 
@@ -19,7 +19,7 @@ bool CollisionDetector::CheckGameleftBorder(QVector<squareCorners*> existingBloc
    return leftSideBorderCrash;
 
 }
-bool CollisionDetector::CheckGameRightSideBorder(QVector<squareCorners*> existingBlocks, squareCorners *blockCorners)
+bool CollisionDetector_C::CheckGameRightSideBorder(QVector<SquareCorners_C*> existingBlocks, SquareCorners_C *blockCorners)
 {
     bool rightSideBorderCrash = false;
     if(blockCorners->corner2.x > xMaxCoordinate)
@@ -30,7 +30,7 @@ bool CollisionDetector::CheckGameRightSideBorder(QVector<squareCorners*> existin
     return rightSideBorderCrash;
 }
 
-bool CollisionDetector::CheckGameTopBorder(QVector<squareCorners*> existingBlocks, squareCorners *blockCorners)
+bool CollisionDetector_C::CheckGameTopBorder(QVector<SquareCorners_C*> existingBlocks, SquareCorners_C *blockCorners)
 {
     bool TopBorderCrash = false;
     if(blockCorners->corner1.y > yMaxCoordinate)
@@ -43,7 +43,7 @@ bool CollisionDetector::CheckGameTopBorder(QVector<squareCorners*> existingBlock
 
 }
 
-bool CollisionDetector::CheckGameBottomBorder(QVector<squareCorners*> existingBlocks, squareCorners *blockCorners)
+bool CollisionDetector_C::CheckGameBottomBorder(QVector<SquareCorners_C*> existingBlocks, SquareCorners_C *blockCorners)
 {
     bool BottomBorderCrash = false;
 

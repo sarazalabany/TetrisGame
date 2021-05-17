@@ -58,7 +58,7 @@ bool game::eventFilter(QObject *obj, QEvent *event)
     if (event->type() == QEvent::KeyPress)
     {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-         qDebug("key press is %d", keyEvent->key());
+        qDebug("key press is %d", keyEvent->key());
         KeyPressesHandler_obj->HandleKeyPress( &blockObj->corners,  keyEvent->key(), _FinishedBlocksContainer);
 
         return true;

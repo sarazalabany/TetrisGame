@@ -1,13 +1,13 @@
 #include "randomize.h"
 
-randomize::randomize()
+Randomize_C::Randomize_C()
 {
 
 }
 
-RGBColor randomize::getRandomColor()
+RGBColor_C Randomize_C::getRandomColor()
 {
-    RGBColor color;
+    RGBColor_C color;
     color.red  = static_cast<float> (rand()) / RAND_MAX;
     color.blue = static_cast<float> (rand()) / RAND_MAX;
     color.green = static_cast<float> (rand()) / RAND_MAX;
@@ -15,9 +15,9 @@ RGBColor randomize::getRandomColor()
     return color;
 }
 
-squareCorners randomize::getRandomShapeCoordinates()
+SquareCorners_C Randomize_C::getRandomShapeCoordinates()
 {
-    squareCorners corners;
+    SquareCorners_C corners;
     return corners;
 
 }
