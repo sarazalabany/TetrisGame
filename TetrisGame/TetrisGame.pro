@@ -32,20 +32,19 @@ SOURCES += \
     main.cpp \
     $$PWD/source/$$LOGIC_DIR/*.cpp \
     $$PWD/source/$$INTERFACE_DIR/*.cpp \
-    $$PWD/source/$$UI_DIR/*.cpp
+    $$PWD/source/$$UI_DIR/*.cpp \
 
 
 HEADERS += \
     $$PWD/header/$$LOGIC_DIR/*.h \
     $$PWD/header/$$INTERFACE_DIR/*.h \
-    $$PWD/header/$$UI_DIR/*.h
+    $$PWD/header/$$UI_DIR/*.h \
 
 
 FORMS += \
     #$$PWD/mainwindow.ui \
     #header/ui/TetrisUi.ui \
-    $$PWD/gameui.ui
-     $$PWD/header/$$UI_DIR/*.h
+    $$PWD/*.ui \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

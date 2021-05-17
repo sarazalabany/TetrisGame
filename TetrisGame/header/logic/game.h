@@ -1,27 +1,32 @@
 #ifndef GAME_H
 #define GAME_H
 
-
-/*Project includes */
-#include "shapeDim.h"
+/*Library Includes*/
 #include <QObject>
 #include <QDebug>
+#include <QVector>
+#include <QWidget>
+#include <QEvent>
+#include <QKeyEvent>
+
+/*Project Includes */
+#include "shapeDim.h"
 #include "globals.h"
 #include "tetrisshape.h"
 #include "glwindow.h"
 #include "collisiondetector.h"
-#include <QVector>
 #include "randomize.h"
-#include <QWidget>
-#include <QEvent>
-#include <QKeyEvent>
 #include "keypresseshandler.h"
 #include "gameui.h"
+#include "startgamewindow.h"
 
 //////////////////*Game sequence*////////////////////
 //1-create a block
 //2-push it in a container
 //3-paint
+namespace UI {
+class Game_C;
+}
 
 class Game_C : public QObject
 
@@ -46,14 +51,17 @@ signals:
 public slots:
     void OnTimerTimeOut();
     void OnblockStopped();
+    void OnStartGame();
 
 private:
     void AddBlockToContainer();
     void MoveBlockWithTime();
     void CreateBlock();
 
-    int                      _gameSpeed;
-    GameUi_C                 *_gameUi;
+    int                                 _gameSpeed;
+    GameUi_C                            *_gameUi;
+    QPointer<StartGameWindow_C>   _gameStartWindow;
+
     GlWindow_C                *_glWindow;
     TetrisShape_C             *_blockObj;
     QTimer                  *_moveBlocksTimer;

@@ -17,12 +17,12 @@ public:
     explicit GameUi_C(QWidget *parent=nullptr);
     ~GameUi_C();
 
-    void DisplayGame();
-    void InitGameWindow(GlWindow_C *glWindow_ptr);
+    void SetWindow(QWidget* widget);
+
 private:
     Ui::GameUi *ui;
-    GlWindow_C *_glWindow;
-
 };
+
+
 
 #endif // GAMEUI_H

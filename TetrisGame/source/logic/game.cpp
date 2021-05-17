@@ -3,30 +3,40 @@
 
 
 Game_C::Game_C()
+ :_gameUi(new GameUi_C)
+ ,_gameStartWindow(new StartGameWindow_C(_gameUi))
+ ,_glWindow(new GlWindow_C)
+ ,_keyPressesHandler(new KeyPressesHandler_C)
 {
-    _glWindow = new GlWindow_C();
-    _gameUi  	=  new GameUi_C;
-//    GlWindow_obj->installEventFilter(this);
-//    GameUi_obj->installEventFilter(this);
-    _keyPressesHandler = new KeyPressesHandler_C;
 
-}
-
-void Game_C::InitGame()
-{
-    _gameUi->show();
-    _gameUi->InitGameWindow(_glWindow);
-    _gameUi->DisplayGame();
+    connect(_gameStartWindow, &StartGameWindow_C::startGameButtonPressed, this, &Game_C::OnStartGame);
 
     //init timer/create Timer
     _moveBlocksTimer = new QTimer();
     connect(_moveBlocksTimer, &QTimer::timeout, this, &Game_C::OnTimerTimeOut);
     connect(this, &Game_C::blockStopped, this, &Game_C::OnblockStopped);
+    //GlWindow_obj->installEventFilter(this);
+    //GameUi_obj->installEventFilter(this);
 
-    SetGameSpeed(GAME_SPEED_1_HZ);
+    //set window to the start menu
+    _gameUi->SetWindow(_gameStartWindow.data());
+    _gameUi->show();
 
 }
 
+void Game_C::OnStartGame()
+{
+
+    SetGameSpeed(GAME_SPEED_1_HZ);
+
+    //show openGl screen in the mainwindow
+    _gameUi->SetWindow(_glWindow);
+    _glWindow->show(); //show should be called first because i think thsi is what makes opengl context
+    _glWindow->Init();
+    _glWindow->PaintTetrisScreen();
+    StartGame();
+
+}
 
 void Game_C::AddBlockToContainer()
 {

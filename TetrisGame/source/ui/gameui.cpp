@@ -7,24 +7,13 @@ GameUi_C::GameUi_C(QWidget *parent ) :
 {
     ui->setupUi(this);
 
-
 }
 
-void GameUi_C::InitGameWindow(GlWindow_C *glWindow_ptr)
+void GameUi_C::SetWindow(QWidget *widget)
 {
-    _glWindow = glWindow_ptr;
-    ui->TetrisScreen->addWidget(_glWindow);
-
-    _glWindow->show(); //show should be called first because i think thsi is what makes opengl context
-    _glWindow->Init();
-
-
+    ui->TetrisScreen->addWidget(widget);
 }
 
-void GameUi_C::DisplayGame()
-{
-    _glWindow->PaintTetrisScreen();
-}
 GameUi_C::~GameUi_C()
 {
 
