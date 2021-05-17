@@ -5,7 +5,7 @@ Randomize_C::Randomize_C()
 
 }
 
-RGBColor_C Randomize_C::getRandomColor()
+RGBColor_C Randomize_C::GetRandomColor()
 {
     RGBColor_C color;
     color.red  = static_cast<float> (rand()) / RAND_MAX;
@@ -15,7 +15,7 @@ RGBColor_C Randomize_C::getRandomColor()
     return color;
 }
 
-SquareCorners_C Randomize_C::getRandomShapeCoordinates()
+SquareCorners_C Randomize_C::GetRandomShapeCoordinates()
 {
     SquareCorners_C corners;
     return corners;

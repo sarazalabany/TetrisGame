@@ -9,24 +9,24 @@
 #include <QEvent>
 #include <QKeyEvent>
 
-class KeyPressesHandler : public QWidget
+class KeyPressesHandler_C : public QWidget
 {
     Q_OBJECT
 public:
-    explicit KeyPressesHandler(QObject *parent = nullptr);
+    explicit KeyPressesHandler_C(QObject *parent = nullptr);
 
-    void HandleKeyPress(squareCorners *corners, int keyPress, QVector<squareCorners*> existingBlocksContainer);
+    void HandleKeyPress(SquareCorners_C *corners, int keyPress, QVector<SquareCorners_C*> existingBlocksContainer);
 
 
 private:
-    void DownKeyPressed(squareCorners *corners);
-    void UpKeyPressed(squareCorners *corners);
-    void LeftKeyPressed(squareCorners *corners);
-    void RightKeyPressed(squareCorners *corners);
+    void DownKeyPressed(SquareCorners_C *corners);
+    void UpKeyPressed(SquareCorners_C *corners);
+    void LeftKeyPressed(SquareCorners_C *corners);
+    void RightKeyPressed(SquareCorners_C *corners);
 
-    squareCorners *_corners;
+    SquareCorners_C *_corners;
     CollisionDetector_C _collisionDetector;
-    QVector<squareCorners*> _existingBlocksContainer;
+    QVector<SquareCorners_C*> _existingBlocksContainer;
 };
 
 

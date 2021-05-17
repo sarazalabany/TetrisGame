@@ -3,39 +3,39 @@
 
 
 
-struct point
+struct Point_C
 {
-    point(int x);
-    point(){};
+    Point_C(int x);
+    Point_C(){};
     float x;
     float y;
 private:
     float z;
 };
 
-struct squareCorners
+struct SquareCorners_C
 {
-    point corner1;
-    point corner2;
-    point corner3;
-    point corner4;
+    Point_C corner1;
+    Point_C corner2;
+    Point_C corner3;
+    Point_C corner4;
 
 };
 
-struct square
+struct Square_C
 {
-    square(){};
-    square(float length, float width)
+    Square_C(){};
+    Square_C(float length, float width)
         :length(length), width(width) {};
 
     float length;
     float width;
 };
 
-struct RGBColor
+struct RGBColor_C
 {
-    RGBColor(){};
-    RGBColor(float red, float green, float blue)
+    RGBColor_C(){};
+    RGBColor_C(float red, float green, float blue)
         :red(red), green(green), blue(blue) {};
 
     float red;
@@ -43,6 +43,5 @@ struct RGBColor
     float blue;
 };
 
-class test;
 
 #endif // SHAPEDIM_H

@@ -2,64 +2,64 @@
 #include <QTimer>
 
 
-game::game()
+Game_C::Game_C()
 {
-    GlWindow_obj = new GlWindow();
-    GameUi_obj  	=  new GameUi;
+    _glWindow = new GlWindow_C();
+    _gameUi  	=  new GameUi_C;
 //    GlWindow_obj->installEventFilter(this);
 //    GameUi_obj->installEventFilter(this);
-    KeyPressesHandler_obj = new KeyPressesHandler;
+    _keyPressesHandler = new KeyPressesHandler_C;
 
 }
 
-void game::InitGame()
+void Game_C::InitGame()
 {
-    GameUi_obj->show();
-    GameUi_obj->InitGameWindow(GlWindow_obj);
-    GameUi_obj->DisplayGame();
+    _gameUi->show();
+    _gameUi->InitGameWindow(_glWindow);
+    _gameUi->DisplayGame();
 
     //init timer/create Timer
-    MoveBlockstimer = new QTimer();
-    connect(MoveBlockstimer, &QTimer::timeout, this, &game::OnTimerTimeOut);
-    connect(this, &game::blockStopped, this, &game::OnblockStopped);
+    _moveBlocksTimer = new QTimer();
+    connect(_moveBlocksTimer, &QTimer::timeout, this, &Game_C::OnTimerTimeOut);
+    connect(this, &Game_C::blockStopped, this, &Game_C::OnblockStopped);
 
     SetGameSpeed(GAME_SPEED_1_HZ);
 
 }
 
 
-void game::AddBlockToContainer()
+void Game_C::AddBlockToContainer()
 {
 
 }
 
-void game::StartGame()
+void Game_C::StartGame()
 {
-    MoveBlockstimer->start(GameSpeed);
+    _moveBlocksTimer->start(_gameSpeed);
 
     CreateBlock();
 }
 
 
-void game::StopGame()
+void Game_C::StopGame()
 {
 
 }
 
-void game::SetGameSpeed(int speed)
+void Game_C::SetGameSpeed(int speed)
 {
-    GameSpeed = speed;
+    _gameSpeed = speed;
 }
 
 
-bool game::eventFilter(QObject *obj, QEvent *event)
+bool Game_C::eventFilter(QObject *obj, QEvent *event)
 {
 
     if (event->type() == QEvent::KeyPress)
     {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         qDebug("key press is %d", keyEvent->key());
-        KeyPressesHandler_obj->HandleKeyPress( &blockObj->corners,  keyEvent->key(), _FinishedBlocksContainer);
+        _keyPressesHandler->HandleKeyPress( &_blockObj->corners,  keyEvent->key(), _FinishedBlocksContainer);
 
         return true;
     }
@@ -71,19 +71,19 @@ bool game::eventFilter(QObject *obj, QEvent *event)
    }
 }
 
-void game::OnTimerTimeOut()
+void Game_C::OnTimerTimeOut()
 {
     qDebug()<<"Timeout";
-    qDebug()<<" Corner 1 Now is: "<<blockObj->corners.corner1.x << ", " << blockObj->corners.corner1.y;
+    qDebug()<<" Corner 1 Now is: "<<_blockObj->corners.corner1.x << ", " << _blockObj->corners.corner1.y;
     MoveBlockWithTime();
 
 
 
 }
 
-void game::OnblockStopped()
+void Game_C::OnblockStopped()
 {
-    _FinishedBlocksContainer.push_back(&blockObj->corners);
+    _FinishedBlocksContainer.push_back(&_blockObj->corners);
     CreateBlock();
     qDebug()<<"Pushed a block in container";
 
@@ -91,52 +91,51 @@ void game::OnblockStopped()
 }
 
 
-void game::_UpdateWindow()
+void Game_C::_UpdateWindow()
 {
     //paint tetris blocks
-    GlWindow_obj->SetOpenGlBuffer(_NewBlocksContainer);
-     GlWindow_obj->PaintTetrisScreen();
+    _glWindow->SetOpenGlBuffer(_NewBlocksContainer);
+    _glWindow->PaintTetrisScreen();
 
 }
 
-void game::MoveBlockWithTime()
+void Game_C::MoveBlockWithTime()
 {
 
-    if(_collisionDetector.CheckGameBottomBorder(_FinishedBlocksContainer, &blockObj->corners))
+    if(_collisionDetector.CheckGameBottomBorder(_FinishedBlocksContainer, &_blockObj->corners))
     {
 
         emit blockStopped();
         return;
     }
-    blockObj->corners.corner1.y -= static_cast<float>(2.0f * windowGridUnitY);
-    blockObj->corners.corner2.y -= static_cast<float>(2.0f * windowGridUnitY);
+    _blockObj->corners.corner1.y -= static_cast<float>(2.0f * windowGridUnitY);
+    _blockObj->corners.corner2.y -= static_cast<float>(2.0f * windowGridUnitY);
 
-    blockObj->corners.corner3.y -= static_cast<float>(2.0f * windowGridUnitY);
-    blockObj->corners.corner4.y -= static_cast<float>(2.0f * windowGridUnitY);
+    _blockObj->corners.corner3.y -= static_cast<float>(2.0f * windowGridUnitY);
+    _blockObj->corners.corner4.y -= static_cast<float>(2.0f * windowGridUnitY);
 
 }
 
-void game::CreateBlock()
+void Game_C::CreateBlock()
 {
      qDebug()<<"Created a new shape";
-    blockObj= new TetrisShape;
+    _blockObj= new TetrisShape_C;
 
    //create a tetris block
-   square block(2.0f * windowGridUnitY, 2.0f *  windowGridUnitX);
+   Square_C block(2.0f * windowGridUnitY, 2.0f *  windowGridUnitX);
 
-   point startPosition;
-   startPosition.x = -1.0f * windowGridUnitX;
-   startPosition.y = 1.0f;
+   Point_C start_position;
+   start_position.x = -1.0f * windowGridUnitX;
+   start_position.y = 1.0f;
 
-   randomize randomObject;
-   RGBColor color = randomObject.getRandomColor();
-
+   Randomize_C randomObject;
+   RGBColor_C color = randomObject.GetRandomColor();
 
    //create shape
-   blockObj->CreateShape(block, startPosition, color);
+   _blockObj->CreateShape(block, start_position, color);
 
    //insert shape in container
-   _NewBlocksContainer.push_back(blockObj);
+   _NewBlocksContainer.push_back(_blockObj);
 
    _UpdateWindow();
 

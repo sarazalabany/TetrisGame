@@ -9,18 +9,18 @@
 
 //this class takes a tetris object and paints it on the screen
 
-class TetrisShape
+class TetrisShape_C
 {
 public:
-    TetrisShape();
+    TetrisShape_C();
     //TetrisShape(square block, point startingPos, RGBColor color);
 
-    float width;
-    float length;
+    float _width;
+    float _length;
 
-    Point_C start;
+    Point_C start_position;
     SquareCorners_C corners;
-    RGBColor_C blockColor;
+    RGBColor_C block_color;
 
     void CreateShape(Square_C block, Point_C startingPos, RGBColor_C color);
 

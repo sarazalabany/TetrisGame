@@ -11,13 +11,13 @@
 #include "tetrisshape.h"
 
 
-class GlWindow : public QOpenGLWidget, protected QOpenGLFunctions
+class GlWindow_C : public QOpenGLWidget, protected QOpenGLFunctions
 {
         Q_OBJECT
 
     public:
-        GlWindow(QWidget *parent = nullptr);
-        ~GlWindow();
+        GlWindow_C(QWidget *parent = nullptr);
+        ~GlWindow_C();
 
         void Init();
         void SetOpenGlBuffer(QVector<TetrisShape_C*> container);

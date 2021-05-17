@@ -1,7 +1,7 @@
 #include "gameui.h"
 #include "ui_gameui.h"
 
-GameUi::GameUi(QWidget *parent ) :
+GameUi_C::GameUi_C(QWidget *parent ) :
     QMainWindow(parent),
     ui(new Ui::GameUi)
 {
@@ -10,23 +10,22 @@ GameUi::GameUi(QWidget *parent ) :
 
 }
 
-void GameUi::InitGameWindow(GlWindow *glWindow_ptr)
+void GameUi_C::InitGameWindow(GlWindow_C *glWindow_ptr)
 {
-    glWindow = glWindow_ptr;
-    ui->TetrisScreen->addWidget(glWindow);
+    _glWindow = glWindow_ptr;
+    ui->TetrisScreen->addWidget(_glWindow);
 
-
-    glWindow->show(); //show should be called first because i think thsi is what makes opengl context
-    glWindow->Init();
+    _glWindow->show(); //show should be called first because i think thsi is what makes opengl context
+    _glWindow->Init();
 
 
 }
 
-void GameUi::DisplayGame()
+void GameUi_C::DisplayGame()
 {
-    glWindow->PaintTetrisScreen();
+    _glWindow->PaintTetrisScreen();
 }
-GameUi::~GameUi()
+GameUi_C::~GameUi_C()
 {
 
     delete ui;

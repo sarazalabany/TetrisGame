@@ -4,12 +4,12 @@
 #include "shapeDim.h"
 #include "random"
 
-class randomize
+class Randomize_C
 {
 public:
-    randomize();
-    RGBColor getRandomColor();
-    squareCorners getRandomShapeCoordinates();
+    Randomize_C();
+    RGBColor_C GetRandomColor();
+    SquareCorners_C GetRandomShapeCoordinates();
 
 };
 

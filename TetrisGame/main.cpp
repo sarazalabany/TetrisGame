@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    game *gameInstance = new game;
+    Game_C *gameInstance = new Game_C;
     gameInstance->InitGame();
     gameInstance->StartGame();
 

@@ -9,19 +9,19 @@ namespace Ui {
 class GameUi;
 }
 
-class GameUi : public QMainWindow
+class GameUi_C : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit GameUi(QWidget *parent=nullptr);
-    ~GameUi();
+    explicit GameUi_C(QWidget *parent=nullptr);
+    ~GameUi_C();
 
     void DisplayGame();
-    void InitGameWindow(GlWindow *glWindow_ptr);
+    void InitGameWindow(GlWindow_C *glWindow_ptr);
 private:
     Ui::GameUi *ui;
-    GlWindow *glWindow;
+    GlWindow_C *_glWindow;
 
 };
 

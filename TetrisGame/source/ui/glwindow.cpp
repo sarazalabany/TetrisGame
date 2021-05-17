@@ -1,41 +1,41 @@
 #include "glwindow.h"
 
 
-GlWindow::GlWindow( QWidget* parent) {
+GlWindow_C::GlWindow_C( QWidget* parent) {
 }
 
-GlWindow::~GlWindow() {}
+GlWindow_C::~GlWindow_C() {}
 
 
-void GlWindow::Init()
+void GlWindow_C::Init()
 {
     initializeGL();
 
 }
 
-void GlWindow::SetOpenGlBuffer(QVector<TetrisShape*> container)
+void GlWindow_C::SetOpenGlBuffer(QVector<TetrisShape_C*> container)
 {
     _shapeContainer = container;
 
 }
 
-void GlWindow::PaintTetrisScreen()
+void GlWindow_C::PaintTetrisScreen()
 {
         paintGL();
 }
 
 
-void GlWindow::initializeGL()
+void GlWindow_C::initializeGL()
 {
     initializeOpenGLFunctions();
 }
 
-void GlWindow::resizeGL(int width, int height)
+void GlWindow_C::resizeGL(int width, int height)
 {
 
 }
 
-void GlWindow::paintGL()
+void GlWindow_C::paintGL()
 {
     update();
 
@@ -43,42 +43,26 @@ void GlWindow::paintGL()
     glDisable(GL_DEPTH_TEST); //disable 3d buffer
     glClear(GL_COLOR_BUFFER_BIT); //cleans the screen
 
-
-
     for(auto shape : _shapeContainer)
     {
 
         glBegin(GL_QUADS);
+        glColor3f(shape->block_color.red,
+                  shape->block_color.green,
+                  shape->block_color.blue
+                  );
+        glVertex2f(shape->corners.corner1.x, shape->corners.corner1.y);
 
-         //first corner
-         glColor3f(shape->blockColor.red,
-                   shape->blockColor.green,
-                   shape->blockColor.blue
-                   );
-         glVertex2f(shape->corners.corner1.x, shape->corners.corner1.y);
+        //second corner
+        glVertex2f(shape->corners.corner2.x, shape->corners.corner2.y);
 
-         //second corner
-         glColor3f(shape->blockColor.red,
-                   shape->blockColor.green,
-                   shape->blockColor.blue
-                   );
-         glVertex2f(shape->corners.corner2.x, shape->corners.corner2.y);
+        //third corner
+        glVertex2f(shape->corners.corner3.x, shape->corners.corner3.y);
 
-         //third corner
-         glColor3f(shape->blockColor.red,
-                   shape->blockColor.green,
-                   shape->blockColor.blue
-                   );
-         glVertex2f(shape->corners.corner3.x, shape->corners.corner3.y);
+        //fourth corner
+        glVertex2f(shape->corners.corner4.x, shape->corners.corner4.y);
 
-         //fourth corner
-         glColor3f(shape->blockColor.red,
-                   shape->blockColor.green,
-                   shape->blockColor.blue
-                   );
-         glVertex2f(shape->corners.corner4.x, shape->corners.corner4.y);
-
-         glEnd();
+        glEnd();
     }
 
 

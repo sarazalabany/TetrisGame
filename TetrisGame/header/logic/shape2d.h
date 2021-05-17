@@ -3,19 +3,19 @@
 
 #include "randomize.h"
 
-class Shape2D
+class Shape2D_C
 {
 public:
-    Shape2D();
+    Shape2D_C();
 
     void CreateShape();
-    RGBColor GetColor();
-    squareCorners GetCorners();
+    RGBColor_C GetColor();
+    SquareCorners_C GetCorners();
 
 private:
-    float width, length;
-    RGBColor color;
-    squareCorners corners;
+    float _width, _length;
+    RGBColor_C _color;
+    SquareCorners_C _corners;
 
     Randomize_C _randomHandler;
 

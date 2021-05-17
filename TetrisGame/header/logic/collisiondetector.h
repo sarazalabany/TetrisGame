@@ -5,22 +5,22 @@
 #include <QVector>
 #include <algorithm>
 
-class CollisionDetector
+class CollisionDetector_C
 {
 public:
-    CollisionDetector();
+    CollisionDetector_C();
 
-    bool CheckGameleftBorder(QVector<squareCorners*> existingBlocks, squareCorners* blockCorners);
-    bool CheckGameRightSideBorder(QVector<squareCorners*> existingBlocks, squareCorners* blockCorners);
-    bool CheckGameTopBorder(QVector<squareCorners*> existingBlocks, squareCorners* blockCorners);
-    bool CheckGameBottomBorder(QVector<squareCorners*> existingBlocks, squareCorners* blockCorners);
+    bool CheckGameleftBorder(QVector<SquareCorners_C*> existingBlocks, SquareCorners_C* blockCorners);
+    bool CheckGameRightSideBorder(QVector<SquareCorners_C*> existingBlocks, SquareCorners_C* blockCorners);
+    bool CheckGameTopBorder(QVector<SquareCorners_C*> existingBlocks, SquareCorners_C* blockCorners);
+    bool CheckGameBottomBorder(QVector<SquareCorners_C*> existingBlocks, SquareCorners_C* blockCorners);
 
 private:
-    bool CompareBlockBottomWithExistingBlocks(squareCorners *block1, squareCorners *existingBlock);
+    bool CompareBlockBottomWithExistingBlocks(SquareCorners_C *block1, SquareCorners_C *existingBlock);
 
-    bool CompareBlockTopWithExistingBlocks(squareCorners *block1, squareCorners *existingBlock);
-    bool CompareBlockRightSideWithExistingBlocks(squareCorners *block1, squareCorners *existingBlock);
-    bool CompareBlockLeftSideWithExistingBlocks(squareCorners *block1, squareCorners *existingBlock);
+    bool CompareBlockTopWithExistingBlocks(SquareCorners_C *block1, SquareCorners_C *existingBlock);
+    bool CompareBlockRightSideWithExistingBlocks(SquareCorners_C *block1, SquareCorners_C *existingBlock);
+    bool CompareBlockLeftSideWithExistingBlocks(SquareCorners_C *block1, SquareCorners_C *existingBlock);
 
 };
 
